@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekly Schedule</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="scheduleStyle.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true">⌂</span>
+        <span class="brand-text">Web Project</span>
+      </a>
+    </div>
+  </header>
+
+
+  <main class="container">
+    <h1 class="page-title">Weekly Schedule</h1>
+
+    <div class="schedule-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>8:00–9:00</th>
+            <td></td>
+            <td><button class="card open-grt431">Network Architecture<br><span>GRT431</span></button></td>
+            <td></td>
+            <td><button class="card open-grt431">Network Architecture<br><span>GRT431</span></button></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th>9:00–10:00</th>
+            <td></td>
+            <td></td>
+            <td rowspan="2"><button class="card open-grt473">Network Architecture Lab<br><span>GRT473</span></button></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th>10:00–11:00</th>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <th>11:00–12:00</th>
+            <td></td>
+            <td><button class="card open-grt320">Electrostatics<br><span>GRT320</span></button></td>
+            <td><button class="card open-gen303">Innovation<br><span>GEN303</span></button></td>
+            <td><button class="card open-grt320">Electrostatics<br><span>GRT320</span></button></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th>12:00–1:00</th>
+            <td></td>
+            <td rowspan="2"><button class="card open-gen428">Numerical Analysis<br><span>GEN428</span></button></td>
+            <td></td>
+            <td rowspan="2"><button class="card open-gen428">Numerical Analysis<br><span>GEN428</span></button></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th>1:00–2:00</th>
+            <td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <th>2:00–3:00</th>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <th>3:00–4:00</th>
+            <td rowspan="2"><button class="card open-gin446">Web Programming<br><span>GIN446</span></button></td>
+            <td rowspan="2"><button class="card open-gin321">Algorithms<br><span>GIN321</span></button></td>
+            <td></td>
+            <td rowspan="2"><button class="card open-gin321">Algorithms<br><span>GIN321</span></button></td>
+            <td rowspan="2"><button class="card open-gin446">Web Programming<br><span>GIN446</span></button></td>
+          </tr>
+
+          <tr>
+            <th>4:00–5:00</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+
+  <dialog id="modal-grt431" data-course="Network Architecture"></dialog>
+  <dialog id="modal-grt473" data-course="Network Architecture Lab"></dialog>
+  <dialog id="modal-grt320" data-course="Electrostatics"></dialog>
+  <dialog id="modal-gen428" data-course="Numerical Analysis"></dialog>
+  <dialog id="modal-gin321" data-course="Algorithms"></dialog>
+  <dialog id="modal-gin446" data-course="Web Programming"></dialog>
+  <dialog id="modal-gen303" data-course="Innovation"></dialog>
+
+  <script>
+    const courseDetails = {
+      grt431: {
+        code: "GRT431",
+        instructor: "Dr. Zeina Awada",
+        room: "Bloc H · Room 106",
+        section: "E01",
+        hours: "3",
+        prereq: "GEL311, GIN231"
+      },
+      grt473: {
+        code: "GRT473",
+        instructor: "Dr. Diala Abi Haidar",
+        room: "Bloc H · Room S103",
+        section: "E02",
+        hours: "1",
+        prereq: "GRT431"
+      },
+      grt320: {
+        code: "GRT320",
+        instructor: "Dr. Adib Akl",
+        room: "Bloc H · Room 304",
+        section: "E01",
+        hours: "3",
+        prereq: "MAT313"
+      },
+      gen428: {
+        code: "GEN428",
+        instructor: "Dr. Stephanie Chahine",
+        room: "Bloc H · Room 108",
+        section: "E02",
+        hours: "3",
+        prereq: "MAT220, MAT310, GIN221, STA320"
+      },
+      gin321: {
+        code: "GIN321",
+        instructor: "Dr. Joseph Zalaket",
+        room: "Bloc H · Room 107",
+        section: "E01",
+        hours: "3",
+        prereq: "GIN231, GIN311"
+      },
+      gin446: {
+        code: "GIN446",
+        instructor: "Dr. Pascal Damien",
+        room: "Bloc H · Room 107",
+        section: "E01",
+        hours: "3",
+        prereq: "GIN300"
+      },
+      gen303: {
+        code: "GEN303",
+        instructor: "Dr. Sandy Rihana",
+        room: "Bloc E · Room 201",
+        section: "E01",
+        hours: "2",
+        prereq: "None"
+      }
+    };
+
+    for (const [id, data] of Object.entries(courseDetails)) {
+      const dlg = document.getElementById(`modal-${id}`);
+      dlg.innerHTML = `
+        <header class="m-header">
+          <h2>${dlg.dataset.course}</h2>
+          <button type="button" class="m-close" aria-label="Close">×</button>
+        </header>
+        <div class="m-subrule"></div>
+        <div class="m-body">
+          <p><strong>Course Code:</strong> ${data.code}</p>
+          <p><strong>Instructor:</strong> ${data.instructor}</p>
+          <p><strong>Meeting Room:</strong> ${data.room}</p>
+          <p><strong>Section:</strong> ${data.section}</p>
+          <p><strong>Credit Hours:</strong> ${data.hours}</p>
+          <p><strong>Prerequisites:</strong> ${data.prereq}</p>
+        </div>`;
+    }
+
+    document.querySelectorAll(".card").forEach(btn => {
+      const id = btn.classList[1].split("-")[1];
+      const dialog = document.getElementById(`modal-${id}`);
+      const close = dialog.querySelector(".m-close");
+
+      btn.addEventListener("click", () => dialog.showModal());
+      dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });
+      close.addEventListener("click", () => dialog.close());
+    });
+  </script>
+
+  <section class="disclaimer">
+  <div class="disclaimer-text">
+    <strong>DISCLAIMER :</strong>
+  This is created solely for educational purposes as part of a web programming course.
+  All information presented on this site are not intended for commercial uses
+and their sources are listed on the <span class="ref-text">references page.</span>
+<br><br>
+    <strong>AI Disclosure:</strong>
+  This project includes sections developed with the assistance of AI tools. All content generated using AI was reviewed and fast-checked.
+  </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© 2025 GIN446 · By Madeleine Farah · Last Updated: 11-11-2025</small>
+    </div>
+  </footer>
+</body>
+</html>

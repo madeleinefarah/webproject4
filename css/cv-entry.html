@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Generator | Web Project</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="cvStyle.css" />
+  <link rel="stylesheet" href="cv-entryStyles.css" />
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true">⌂</span>
+        <span class="brand-text">Web Project</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>CV Generator</h1>
+
+    <form id="cvForm">
+      <h2>Personal Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="e.g. farahmadeleine0@gmail.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="text" id="phone" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="country">Country *</label>
+          <input type="text" id="country" required />
+        </div>
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" id="city" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="jobTitle">Job Title *</label>
+          <input type="text" id="jobTitle" placeholder="e.g. Computer Engineering" required />
+        </div>
+      </div>
+
+      <h2>Profile</h2>
+      <div class="form-group">
+        <label for="summary">Short professional summary</label>
+        <textarea id="summary"
+          placeholder="e.g. Motivated computer engineering student with strong interest in web development and problem solving."></textarea>
+      </div>
+
+      <h2>Experience</h2>
+      <div id="experienceContainer">
+        <label>List your relevant experience from the last years.</label>
+      </div>
+      <button type="button" onclick="addExperience()">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon
+            points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7">
+          </polygon>
+        </svg>
+        Add Experience
+      </button>
+
+      <h2>Education</h2>
+      <div id="educationContainer"></div>
+      <button type="button" onclick="addEducation()">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon
+            points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7">
+          </polygon>
+        </svg>
+        Add Education
+      </button>
+
+      <h2>Hard Skills</h2>
+      <div id="hardSkillsContainer"></div>
+      <button type="button" onclick="addHardSkill()">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon
+            points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7">
+          </polygon>
+        </svg>
+        Add Hard Skill
+      </button>
+
+      <h2>Languages</h2>
+      <div id="languagesContainer">
+        <label>Your native language and any additional languages you speak.</label>
+      </div>
+      <button type="button" onclick="addLanguage()">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon
+            points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7">
+          </polygon>
+        </svg>
+        Add Language
+      </button>
+
+      <h2>Soft Skills</h2>
+      <div id="softSkillsContainer"></div>
+      <button type="button" onclick="addSoftSkill()">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon
+            points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7">
+          </polygon>
+        </svg>
+        Add Soft Skill
+      </button>
+
+      <h2>Hobbies</h2>
+      <div id="hobbiesContainer"></div>
+      <button type="button" onclick="addHobby()">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+          <polygon
+            points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7">
+          </polygon>
+        </svg>
+        Add Hobby
+      </button>
+
+      <h1></h1>
+      <div class="submit-btn buttons-row">
+        <button type="submit" class="generate-btn">
+          Generate&nbsp;
+        </button>
+
+        <button type="button"
+                class="cvv-print download-btn"
+                onclick="downloadCVAsPDF()">
+          Download CV
+        </button>
+      </div>
+    </form>
+
+
+    <div id="cvOutput" class="cv-output">
+      <div class="cvv">
+        <header class="cv-print-header">
+          <h1 id="outputPrintName">MADELEINE FARAH</h1>
+          <p id="outputPrintJob">Computer Engineering</p>
+          <p>
+            <span id="outputPrintLocation">Sahel Alma</span>
+            ·
+            <span id="outputPrintPhone">+961 71 632 250</span>
+            ·
+          </p>
+          <p>
+            <a id="outputPrintEmail"
+              href="mailto:madeleine.t.farah@net.usek.edu.lb">
+              madeleine.t.farah@net.usek.edu.lb
+            </a>
+          </p>
+        </header>
+
+        <section class="cvv-hero">
+          <div class="cvv-hero-inner">
+            <div class="cvv-avatar" aria-hidden="true">
+              <span id="avatarInitials">MF</span>
+            </div>
+            <div class="cvv-titleblock">
+              <h1 class="cvv-name" id="outputName">MADELEINE FARAH</h1>
+              <p class="cvv-role" id="outputJobTitle">Computer Engineering</p>
+              <ul class="cvv-contact">
+                <li id="outputLocation">Sahel Alma</li>
+                <li>
+                  <a id="outputPhoneLink" href="tel:+96171632250">
+                    +961 71 632 250
+                  </a>
+                </li>
+                <li>
+                  <a id="outputEmailLink"
+                    href="mailto:madeleine.t.farah@net.usek.edu.lb">
+                    madeleine.t.farah@net.usek.edu.lb
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <main class="cvv-shell">
+          <article class="cvv-card" role="main">
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Profile</h2>
+              <p class="cvv-line" id="outputSummary"></p>
+            </section>
+
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Experience</h2>
+              <div id="outputExperience"></div>
+            </section>
+
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Education</h2>
+              <div class="cvv-grid" id="outputEducation"></div>
+            </section>
+
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Hard Skills</h2>
+              <ul class="cvv-tags" id="outputHardSkills"></ul>
+            </section>
+
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Languages</h2>
+              <ul class="cvv-tags" id="outputLanguages"></ul>
+            </section>
+
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Soft Skills</h2>
+              <ul class="cvv-bullets cvv-compact" id="outputSoftSkills"></ul>
+            </section>
+
+            <section class="cvv-sec">
+              <h2 class="cvv-h2">Hobbies</h2>
+              <ul class="cvv-bullets cvv-compact" id="outputHobbies"></ul>
+            </section>
+          </article>
+        </main>
+
+
+      </div>
+    </div>
+
+       <section class="disclaimer non-print">
+  <div class="disclaimer-text">
+    <strong>DISCLAIMER :</strong>
+  This is created solely for educational purposes as part of a web programming course.
+  All information presented on this site are not intended for commercial uses and their sources are listed on the <span class="ref-text">references page.</span>
+<br><br>
+    <strong>AI Disclosure:</strong>
+  This project includes sections developed with the assistance of AI tools. All content generated using AI was reviewed and fast-checked.
+</section>
+    
+
+    <footer class="non-print">
+      <div class="footer-inner">
+        <small>© 2025 GIN446 · By Madeleine Farah · Last Updated: 12-11-2025</small>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../js/cv.js"></script>
+  <iframe id="cvTemplateFrame" src="cv.html" style="display:none;"></iframe>
+
+</body>
+</html>

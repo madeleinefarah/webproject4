@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Events Catalog | Web Project</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="events.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">⌂</span>
+        <span class="brand-text">Web Project</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="events-page">
+    <section class="events-shell">
+      <header class="events-header">
+        <h1 class="events-title">HTML Events Catalog</h1>
+        <p class="events-subtitle">
+          Explore browser events, their categories, tags, and documentation.
+        </p>
+      </header>
+
+      <div class="events-controls">
+
+        <div class="events-search">
+          <span class="events-search-icon">🔍</span>
+          <input type="text" id="eventsSearch" placeholder="Search events..." />
+        </div>
+
+        <div class="events-filter">
+          <span class="events-filter-icon">📂</span>
+          <select id="eventsCategory">
+            <option value="all">All Categories</option>
+            <option value="Window">Window</option>
+            <option value="Mouse">Mouse</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Form">Form</option>
+            <option value="Clipboard">Clipboard</option>
+            <option value="Drag & Drop">Drag & Drop</option>
+            <option value="Touch">Touch</option>
+            <option value="Pointer">Pointer</option>
+            <option value="Media">Media</option>
+            <option value="Animation/Transition">Animation/Transition</option>
+            <option value="DOM">DOM</option>
+            <option value="Focus">Focus</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="eventsCount" class="events-count">Showing 0 events</div>
+
+      <div class="events-table-wrapper">
+        <table class="events-table">
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Tags</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+
+          <tbody id="eventsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+<section class="disclaimer">
+  <div class="disclaimer-text">
+    <strong>DISCLAIMER :</strong>
+  This is created solely for educational purposes as part of a web programming course.
+  All information presented on this site are not intended for commercial uses and their sources are listed on the <span class="ref-text">references page.</span>
+<br><br>
+    <strong>AI Disclosure:</strong>
+  This project includes sections developed with the assistance of AI tools. All content generated using AI was reviewed and fast-checked.
+</section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© 2025 GIN446 · By Madeleine Farah · Last Updated: 11-11-2025</small>
+    </div>
+  </footer>
+  </main>
+
+  <script src="../js/events.js"></script>
+
+</body>
+</html>
